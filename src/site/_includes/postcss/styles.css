@@ -1,0 +1,19 @@
+
+/* Foundations */ 
+@import "normalize.css";  
+@import "_vars.pcss";
+@import "@coopdigital/foundations-global";
+@import "@coopdigital/foundations-grid";
+@import "@coopdigital/foundations-forms";
+
+/* Components */
+
+/* Styles for the prototype - remove if not needed */ 
+@import "_prototype-styles.pcss";
+
+/* Add custom styles in this file */ 
+@import "_my-styles.pcss";
+
+
+
+  

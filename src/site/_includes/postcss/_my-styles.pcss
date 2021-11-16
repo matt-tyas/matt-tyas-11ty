@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap');
+
+html {
+    font-size: 1rem;
+	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0 5%;
+}
+
+.mt-main {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+@media (--mq-large) {
+    .mt-main {
+        margin-top: 0;
+    }
+}
+
+@media (--mq-large) {
+    .mt-header {
+      justify-content: space-between;
+      flex-direction: row;
+      margin-bottom: var(--spacing-32);
+    }
+}
+
+.mt-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    height: 100px;
+    z-index: 2;
+    margin: var(--spacing-16) 1%;
+    background-color: var(--color-white);
+}
+  
+@media (--mq-large) {
+    .mt-header {
+      justify-content: space-between;
+      flex-direction: row;
+      margin-bottom: var(--spacing-32);
+    }
+}
+
+.mt-logo {
+    display: flex;
+    align-items: center; 
+    height: 100px;
+}
+
+.mt-computer {
+    margin-right: 1rem;
+}
+
+.mt-section {
+    margin: 4rem 0 0 0;
+}
+
+@media (--mq-large) {
+    .mt-section {
+        margin: 4rem 0 0 0;
+    }
+}
+
+.mt-me {
+    max-width: 460px;
+}
+
+.mt-portrait {
+    height: 150px;
+    overflow: hidden;
+}
+
+@media (--mq-medium) {
+    .mt-portrait {
+        height: auto;
+        overflow: hidden;
+    }
+}
+
+.mt-icon {
+    float: left;
+    margin-bottom: 2rem;
+}
+
+@media (--mq-large) {
+    .mt-icon {
+        float: right;
+    }
+}
+
+.mt-nav {
+    margin-top: 0; 
+    padding: 0.5rem 0 0 0;
+}
+
+@media (--mq-large) {
+    .mt-nav {
+      margin-bottom: var(--spacing-32);
+      padding: 1.1rem 0 0 0;
+    }
+}
+
+.mt-nav__item {
+    margin-right: 1rem;
+}
+
+@media (--mq-large) {
+    .mt-nav__item  {
+        margin-right: 1rem;
+    }
+}
+
+.mt-nav__item:hover {
+    text-decoration: underline;
+}
+
+.mt-text {
+    max-width: 800px;
+}
+
+h1,
+.mt-h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+h2,
+.mt-h2 {
+    font-size: clamp(2rem, 3vw, 7rem);
+    margin: 0 0 1rem 0;
+}
+
+.mt-p-lead {
+	font-size: clamp(3rem, 6vw, 10rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 1rem 0 1.5rem 0;
+}
+
+@media (--mq-medium) {
+    .mt-p-lead {
+        line-height: 1.2;
+        margin: 0 0 3rem 0;
+    }
+}
+
+.mt-p-sub {
+    font-size: clamp(2rem, 1.5vw, 7rem);
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0 0 2.5vh 0;
+}
+
+.mt-work-logo {
+    margin: 3rem 0 0 0;
+}
+
+.mt-blog-post {
+    margin: 0 0 2.5vh 0;
+}
+
+p {
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0 0 2.5vh 0;
+}
+
+a {
+    color: var(--color-black);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--color-black);
+    text-decoration: none;
+}

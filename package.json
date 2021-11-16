@@ -1,0 +1,54 @@
+{
+  "name": "matt-tyas",
+  "version": "1.0.0",
+  "description": "A project bootstrap for prototypes to allow Co-op colleagues to research with users.",
+  "author": "Matt Tyas",
+  "license": "MIT",
+  "engines": {
+    "node": "12.x",
+    "npm": "7.x"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
+    "build": "cross-env ELEVENTY_ENV=prod eleventy",
+    "seed": "cross-env ELEVENTY_ENV=seed eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coopdigital/11ty-prototyping-kit"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^0.8.3",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
+    "@coopdigital/foundations-forms": "^5.3.3",
+    "@coopdigital/foundations-global": "^3.3.5",
+    "@coopdigital/foundations-grid": "^2.1.5",
+    "@coopdigital/foundations-vars": "^3.8.2",
+    "autoprefixer": "^9.6.0",
+    "axios": "^0.21.1",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.0.0",
+    "html-minifier": "^4.0.0",
+    "luxon": "^1.16.0",
+    "node-fetch": "^2.6.1",
+    "normalize.css": "^8.0.1",
+    "postcss": "^8.3.6",
+    "postcss-calc": "^7.0.5",
+    "postcss-color-mix": "^1.1.0",
+    "postcss-comment": "^2.0.0",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-custom-properties": "^10.0.0",
+    "postcss-import": "^14.0.0",
+    "postcss-mixins": "^6.2.1",
+    "postcss-nesting": "^5.0.0",
+    "postcss-simple-vars": "^5.0.2",
+    "postcss-url": "^10.1.3",
+    "precss": "^4.0.0",
+    "uglify-js": "^3.6.0",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "cross-env": "5.2.0"
+  }
+}
