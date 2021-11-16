@@ -11,16 +11,9 @@ Included:
 - An inline JS pipeline
 - The Co-op foundations, elements and components ready to use
 - [Browsersync](https://browsersync.io/) for testing
-- Instructions on how to deploy to Heroku
 
 
 ## Instructions
-
-### Getting started
-To get a copy ready to work with:
-- use the 'code' button on this page and select 'download zip'
-- upack the folder and rename it 
-- move the folder to where you keep websites
 
 ### Prerequisites
 You'll need [Node.js](https://nodejs.org/) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed. When you run the next step these will be installed autoamtically, however on Co-op Macs you may not have permissions to do this. 
