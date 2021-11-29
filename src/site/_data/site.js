@@ -1,4 +1,4 @@
 module.exports = {
-  "rootUrl" : "https://site-root-url.com",
+  "rootUrl" : "https://matt.tyas.fyi/",
   "buildTime" : new Date()
 }
