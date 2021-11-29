@@ -58,6 +58,31 @@ body {
     margin-right: 1rem;
 }
 
+.mt-logo:hover .mt-expression--is-happy {
+    display: block;
+}
+
+.mt-logo:hover .mt-computer {
+    position: relative;
+    animation: wiggle .75s ease;
+}
+
+@keyframes wiggle {
+
+   0% { transform: rotate(5deg); }
+   50% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.mt-logo:hover .mt-expression {
+    display: none;
+}
+
+.mt-expression--is-happy {
+    display: none;
+    animation: none;
+}
+
 .mt-section {
     margin: 4rem 0 0 0;
 }
