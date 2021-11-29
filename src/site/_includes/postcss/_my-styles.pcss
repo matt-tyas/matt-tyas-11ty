@@ -12,13 +12,13 @@ body {
 }
 
 .mt-main {
-    margin-top: 6rem;
+    padding-top: 0;
     margin-bottom: 6rem;
 }
 
 @media (--mq-large) {
     .mt-main {
-        margin-top: 0;
+        padding-top: 0;
     }
 }
 
@@ -68,7 +68,6 @@ body {
 }
 
 @keyframes wiggle {
-
    0% { transform: rotate(5deg); }
    50% { transform: rotate(-5deg); }
   100% { transform: rotate(0deg); }
@@ -93,17 +92,41 @@ body {
     }
 }
 
+.mt-stacking {
+    z-index: 3;
+    background-color: var(--color-grey-warm-light);
+}
+
+@media (--mq-medium) {
+    .mt-stacking {
+        background-color: transparent;
+    }
+}
+
 .mt-me {
-    max-width: 460px;
+    width: 460px;
 }
 
 .mt-portrait {
-    height: 110px;
-    overflow: hidden;
+    height: 220px;
+    overflow: visible;
+}
+
+.mt-portrait .mt-me {
+    position: relative;
+    top: 110px;
+}
+
+@media (--mq-medium) {
+    .mt-portrait .mt-me{
+        top: 0;
+    }
 }
 
 @media (--mq-medium) {
     .mt-portrait {
+        position: relative;
+        left: -2rem;
         height: auto;
         overflow: hidden;
     }
@@ -148,6 +171,50 @@ body {
 
 .mt-nav__item:hover {
     text-decoration: none;
+}
+
+.mt-section--bg {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+}
+
+@media (--mq-large) {
+    .mt-section--bg  {
+        margin: 4rem 0 0 0;
+    }
+}
+
+.mt-section--bg:after {
+    background-image: url('/images/walls.svg');
+    z-index: -1; 
+    content: "";
+    background-size: ;
+    background-repeat: no-repeat;
+    background-position: -20% 5%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.15;
+}
+
+@media (--mq-medium) {
+    .mt-section--bg:after {   
+        z-index: -1; 
+        content: "";
+        background-image: url('/images/walls-1.svg');
+        background-size: ;
+        background-repeat: no-repeat;
+        background-position: 20% 30%;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.15;
+    }
 }
 
 /* .mt-section--bg {
