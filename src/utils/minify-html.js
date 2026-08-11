@@ -1,7 +1,8 @@
 const htmlmin = require("html-minifier");
 
 module.exports = function(content, outputPath) {
-  if( outputPath.endsWith(".html") ) {
+  // outputPath is false for pages with `permalink: false`, so guard before using it
+  if( outputPath && outputPath.endsWith(".html") ) {
     let minified = htmlmin.minify(content, {
       useShortDoctype: true,
       removeComments: true,

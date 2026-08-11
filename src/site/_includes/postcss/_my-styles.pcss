@@ -35,7 +35,7 @@ body {
     justify-content: space-between;
     flex-direction: column;
     position: relative;
-    height: 100px;
+    min-height: 100px;
     z-index: 2;
     margin: var(--spacing-16) 1%;
 }
@@ -197,6 +197,7 @@ body {
     bottom: 0px;
     left: 0px;
     opacity: 0.15;
+   
 }
 
 @media (--mq-medium) {
@@ -212,18 +213,42 @@ body {
         bottom: 0px;
         left: 0px;
         opacity: 0.15;
+        
     }
 }
+
+.mt-section--content:after {
+    background-position: 10% 0%;
+    background-size: 250px;
+    min-height: 800px; 
+}
+
+.mt-case-study:after {
+    display: block;
+    background-image: url('/images/walls-2.svg');
+    z-index: -1; 
+    content: "";
+    background-size: 340px;
+    background-repeat: repeat-y;
+    position: absolute;
+    top: 1020px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.15;
+}
+
+
 
 .coop-l-grid__item {
     position: relative;
 }
 
-.mt-section-bg-repeater:after { 
+/* .mt-section-bg-repeater:after { 
     display: none;
-}
+} */
 
-@media (--mq-medium) {
+/* @media (--mq-medium) {
     .mt-section-bg-repeater:after {
         display: block;
         background-image: url('/images/walls-2.svg');
@@ -239,7 +264,7 @@ body {
         left: 0px;
         opacity: 0.15;
     }
-}
+} */
 
 .mt-section--last {
     margin-bottom: 20rem;
@@ -305,4 +330,187 @@ a {
 a:hover {
     color: var(--color-black);
     text-decoration: none;
+}
+
+/* Case studies: list on the homepage */
+
+.mt-case-link {
+    margin: 0 0 2.5vh 0;
+}
+
+.mt-case-link__title {
+    font-size: 1.15em;
+}
+
+.mt-case-link__meta {
+    color: var(--color-text-alt);
+    font-size: 0.8em;
+    margin: 0.25rem 0 0 0;
+}
+
+/* Case studies: page */
+
+.mt-case-hero-image {
+    display: block;
+    width: 30%;
+    margin: 1rem 0 2rem 0;
+}
+
+@media (--mq-large) {
+    .mt-case-hero-image {
+        width: 80%;
+        max-width: none;
+        margin: 0;
+        margin: 3rem 0 2rem 2rem;
+    }
+}
+
+.mt-case-kicker {
+    font-size: 0.8em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0.25rem;
+}
+
+.mt-case-title {
+    font-size: clamp(2.25rem, 5vw, 6rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 1.5rem 0;
+}
+
+.mt-case-standfirst {
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 900px;
+}
+
+.mt-case-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0 0 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--color-grey-mid-light);
+    border-bottom: 1px solid var(--color-grey-mid-light);
+}
+
+@media (--mq-medium) {
+    .mt-case-meta {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem 2rem;
+    }
+}
+
+.mt-case-meta__key {
+    color: var(--color-text-alt);
+    font-size: 0.75em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 0.25rem 0;
+}
+
+.mt-case-meta__value {
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Case studies: body copy. Plain HTML, so style the elements directly. */
+
+.mt-case-body {
+    max-width: 800px;
+}
+
+.mt-case-body h3 {
+    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+    font-weight: 600;
+    margin: 2.5rem 0 0.5rem 0;
+}
+
+.mt-case-body ul,
+.mt-case-body ol {
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0 0 2.5vh 0;
+    padding-left: 1.2rem;
+}
+
+.mt-case-body li {
+    margin: 0 0 0.75rem 0;
+}
+
+.mt-quote {
+    border-left: 3px solid var(--color-grey-mid);
+    margin: 3rem 0;
+    padding: 0 0 0 1.5rem;
+}
+
+.mt-quote p {
+    font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0 0 0.75rem 0;
+}
+
+.mt-quote__source {
+    color: var(--color-text-alt);
+    font-size: 0.8em;
+    font-style: normal;
+}
+
+.mt-figure {
+    margin: 3rem 0;
+}
+
+.mt-figure img {
+    display: block;
+    width: 100%;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-mid-light);
+}
+
+/* For a row of images of different shapes: crop them to a common ratio so the
+   row lines up and the captions sit level. */
+.mt-figure--crop img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.mt-figure__caption {
+    color: var(--color-text-alt);
+    font-size: 0.8em;
+    line-height: 1.4;
+    margin: 0.75rem 0 0 0;
+}
+
+.mt-case-nav {
+    border-top: 1px solid var(--color-grey-mid-light);
+    padding: 2rem 0 0 0;
+}
+
+.mt-case-nav__key {
+    color: var(--color-text-alt);
+    font-size: 0.75em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 0.25rem 0;
+}
+
+.mt-case-nav__next {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    font-weight: 600;
+    margin: 0 0 2rem 0;
+}
+
+.mt-case-nav__back {
+    margin: 0;
+}
+
+/* Only for the placeholder images in the draft case studies. Delete the class
+   from the markup once a real image is in, so the figure runs full width. */
+.mt-figure--placeholder img {
+    max-width: 420px;
 }

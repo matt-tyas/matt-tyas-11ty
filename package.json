@@ -12,7 +12,8 @@
     "start": "npm run dev",
     "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
     "build": "cross-env ELEVENTY_ENV=prod eleventy",
-    "seed": "cross-env ELEVENTY_ENV=seed eleventy"
+    "seed": "cross-env ELEVENTY_ENV=seed eleventy",
+    "images": "node scripts/optimise-images.js"
   },
   "repository": {
     "type": "git",

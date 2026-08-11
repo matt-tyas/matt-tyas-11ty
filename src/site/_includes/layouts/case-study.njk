@@ -1,0 +1,125 @@
+---
+layout: layouts/base.njk
+---
+{#
+  Case study layout.
+
+  Front matter each case study can set:
+    title       — the case study name (page h1, homepage list, next-case-study link)
+    standfirst  — one line describing the engagement, sits under the title
+    client      — organisation name, shown in the homepage list
+    period      — e.g. "2016 to 2018", shown in the homepage list
+    meta        — list of key/value rows for the block under the standfirst, e.g.
+                    meta:
+                      - key: Role
+                        value: Interaction and service designer
+    heroImage     — path to an image for the left hand column of the hero,
+                    e.g. /images/case-studies/guardian/funeralcare-poster.jpg
+    heroImageAlt  — alt text for it
+    order       — number, controls position in the list (lowest first)
+    pageTitle / description — override the <title> and meta description
+
+  The body is plain HTML, written as sections in the same shape as the homepage.
+
+  A content section — 4 column decorative gutter + 8 column text:
+
+    <section class="mt-section">
+      <div class="coop-l-grid">
+        <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4 mt-section-bg-repeater"></div>
+        <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8">
+          <h2>Heading</h2>
+          <div class="mt-case-body">
+            <p>…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  An image row — one .coop-l-grid holding one, two or three items. Every item
+  goes inside the SAME grid div or they will not sit on one line. Widths:
+
+    one across    --small-12 --large-12
+    two across    --small-12 --medium-6
+    three across  --small-12 --medium-4
+
+    <section class="mt-section">
+      <div class="coop-l-grid">
+        <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--medium-4">
+          <figure class="mt-figure">
+            <img src="/images/…" alt="…" />
+            <figcaption class="mt-figure__caption">…</figcaption>
+          </figure>
+        </div>
+        … repeat for each image, inside the same grid div …
+      </div>
+    </section>
+
+  Add mt-section--bg to the section for the sketched background. If the images
+  in a row have different shapes, add mt-figure--crop to each figure so they
+  are cropped to a common 3:4 portrait and the captions line up.
+
+  Inside .mt-case-body you also get:
+    <blockquote class="mt-quote"> … <footer class="mt-quote__source">Name, Job title</footer></blockquote>
+#}
+<article class="mt-case">
+
+  <section class="mt-section mt-section--bg mt-section--content">
+    <div class="coop-l-grid">
+      <div
+        class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4"
+      >
+        {% if heroImage %}
+          <img
+            src="{{ heroImage }}"
+            class="mt-case-hero-image"
+            alt="{{ heroImageAlt }}"
+          />
+        {% endif %}
+      </div>
+      <div
+        class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8 mt-stacking"
+      >
+        <p class="mt-case-kicker"><a href="/#case-studies">Case study</a></p>
+        <h1 class="mt-case-title">{{ title }}</h1>
+        {% if standfirst %}
+          <p class="mt-case-standfirst">{{ standfirst }}</p>
+        {% endif %}
+        {% if meta %}
+          <dl class="mt-case-meta">
+            {% for row in meta %}
+              <div class="mt-case-meta__pair">
+                <dt class="mt-case-meta__key">{{ row.key }}</dt>
+                <dd class="mt-case-meta__value">{{ row.value }}</dd>
+              </div>
+            {% endfor %}
+          </dl>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  {{ content | safe }}
+
+  <section class="mt-section mt-section--last">
+    <div class="coop-l-grid">
+      <div
+        class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4 mt-section-bg-repeater"
+      ></div>
+      <div
+        class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8"
+      >
+        <nav class="mt-case-nav" aria-label="More case studies">
+          {% for item in collections.caseStudies %}
+            {% if item.url == page.url and not loop.last %}
+              {% set next = collections.caseStudies[loop.index] %}
+              <p class="mt-case-nav__key">Next case study</p>
+              <p class="mt-case-nav__next"><a href="{{ next.url }}">{{ next.data.title }}</a></p>
+            {% endif %}
+          {% endfor %}
+          <p class="mt-case-nav__back"><a href="/#case-studies">All case studies</a></p>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+</article>

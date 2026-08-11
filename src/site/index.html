@@ -49,6 +49,37 @@ layout: layouts/base.njk
           <li>the power of systems, technology and efficiency to empower teams to innovate and make better decisions</li>
           <li>collaboration and communication to create the best outcomes</li>
         </ul>
+        <img
+          src="images/coop-logo-white.svg"
+          width="60"
+          class="mt-work-logo"
+          alt="The Co-op logo"
+        />
+        <h3>Head of Design, Co-op</h3>
+        <p>
+          As Head of Design I am responsible for leading the design team and
+          design strategy at Co-op. I was previously a Principal Designer
+          responsible for the Co-op Experience Library.
+        </p>
+        <p>
+          <a href="https://coop.co.uk/experience-library">Visit the Co-op Experience Library</a>
+        </p>
+        <img
+          src="images/manchesters-finest.svg"
+          class="mt-work-logo"
+          width="400"
+          alt="Manchester's Finest logo"
+        />
+        <h3>Digital Director, Manchester&rsquo;s Finest</h3>
+        <p>
+          Manchester’s Finest is an independent digital media and marketing
+          company based in the Northern Quarter. We deliver creative content and
+          experiences to Manchester and wider audiences. We aim to promote the
+          very best the city has to offer.
+        </p>
+        <p>
+          <a href="https://wearefinest.com/">Visit Finest Group to see our portfolio</a>
+        </p>
       </div>
     </div>
   </div>
@@ -68,41 +99,18 @@ layout: layouts/base.njk
     <div
       class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8"
     >
-      <h2 id="work">Work</h2>
+      <h2 id="case-studies">Case studies</h2>
       <div class="mt-text">
-        <img
-          src="images/coop-logo-white.svg"
-          width="60"
-          class="mt-work-logo"
-          alt="The Co-op logo"
-        />
-        <h3>Head of Design</h3>
-        <p>
-          As Head of Design I am responsible for leading the design team and
-          design strategy at Co-op. I was previously a Principal Designer
-          responsible for the Co-op Experience Library.
-        </p>
-        <p>
-          <a href="https://coop.co.uk/experience-library">Visit the Co-op Experience Library</a>
-        </p>
-        <img
-          src="images/manchesters-finest.svg"
-          class="mt-work-logo"
-          width="400"
-          alt="Manchester's Finest logo"
-        />
-        <h3>Digital Director</h3>
-        <p>
-          Manchester’s Finest is an independent digital media and marketing
-          company based in the Northern Quarter. We deliver creative content and
-          experiences to Manchester and wider audiences. We aim to promote the
-          very best the city has to offer.
-        </p>
-        <p>
-          <a href="https://wearefinest.com/"
-            >Visit Finest Group to see our portfolio</a
-          >
-        </p>
+        {% for study in collections.caseStudies %}
+        <article class="mt-case-link">
+          <a class="mt-case-link__title" href="{{ study.url }}">{{ study.data.title }}</a>
+          {% if study.data.client or study.data.period %}
+          <p class="mt-case-link__meta">
+            {{ study.data.client }}{% if study.data.client and study.data.period %} &middot; {% endif %}{{ study.data.period }}
+          </p>
+          {% endif %}
+        </article>
+        {% endfor %}
       </div>
     </div>
   </div>

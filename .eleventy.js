@@ -16,6 +16,17 @@ module.exports = function(config) {
   config.addShortcode("year", () => `${new Date().getFullYear()}`);
 
 
+  // Case studies, ordered by the `order` value in each file's front matter.
+  // Anything with `draft: true` is left out of the homepage list and the
+  // next-case-study link. Pair it with `permalink: false` to stop the page
+  // being built at all.
+  config.addCollection("caseStudies", function(collection) {
+    return collection.getFilteredByTag("case-study")
+      .filter(item => !item.data.draft)
+      .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+  });
+
+
   // add support for syntax highlighting
   config.addPlugin(syntaxHighlight);
 
