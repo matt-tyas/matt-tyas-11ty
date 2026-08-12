@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+---
+{#
+  Simple page layout. The same shape as layouts/case-study.njk — the sketched
+  background, the hero and the two column rhythm — but with no kicker, no meta
+  block and no next/previous navigation.
+
+  Front matter:
+    title         — the page h1
+    standfirst    — optional line under the title
+    heroImage     — optional image for the left hand column of the hero
+    heroImageAlt  — alt text for it
+    pageTitle / description — override the <title> and meta description
+
+  The body is plain HTML written as sections, exactly as in a case study:
+
+    <section class="mt-section">
+      <div class="coop-l-grid">
+        <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4 mt-section-bg-repeater"></div>
+        <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8">
+          <h2>Heading</h2>
+          <div class="mt-case-body">
+            <p>…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+#}
+<article class="mt-case">
+<div class="mt-case-study">
+  <section class="mt-section mt-section--content">
+    <div class="coop-l-grid">
+      <div
+        class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4"
+      >
+        {% if heroImage %}
+          <img
+            src="{{ heroImage }}"
+            class="mt-case-hero-image"
+            alt="{{ heroImageAlt }}"
+          />
+        {% endif %}
+      </div>
+      <div
+        class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8 mt-stacking"
+      >
+        <h1 class="mt-case-title">{{ title | safe }}</h1>
+        {% if standfirst %}
+          <p class="mt-case-standfirst">{{ standfirst | safe }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  {{ content | safe }}
+</div>
+</article>

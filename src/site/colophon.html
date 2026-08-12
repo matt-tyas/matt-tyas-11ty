@@ -1,0 +1,67 @@
+---
+title: How I made this site and how I used AI
+standfirst: How this site is designed, built and how I used AI.
+layout: layouts/page.njk
+pageTitle: How I made this site and how I used AI — Matt Tyas
+description: How matt.tyas.fyi is built. Designed and hand coded by Matt Tyas with Eleventy, PostCSS and the Co-op Foundations, deployed from git to Netlify.
+---
+
+<section class="mt-section">
+  <div class="coop-l-grid">
+    <div
+      class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4 mt-section-bg-repeater"
+    ></div>
+    <div
+      class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8"
+    >
+      <h2>I made this</h2>
+      <div class="mt-case-body">
+        <p>I designed this site and hand coded it. I used Claude to help me sort information and and suggest ways to structure information. All the decisions and final content drafts are entirely my own.</p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mt-section">
+  <div class="coop-l-grid">
+    <div
+      class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4 mt-section-bg-repeater"
+    ></div>
+    <div
+      class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8"
+    >
+      <h2>How it is built</h2>
+      <div class="mt-case-body">
+        <h3>The stack</h3>
+        <ul>
+          <li>Eleventy generates the site, with Nunjucks for the templates. Pages are plain HTML with a little front matter at the top to serve templated areas.</li>
+          <li>PostCSS compiles the styles, minimal and hand written.</li>
+          <li>An older version of the Co-op Foundations provide the grid, the spacing scale and a modified type scale. Given I wrote it - that feels okay.</li>
+          <li>Poppins for type, sized with <code>clamp()</code> so it scales with the viewport rather than stepping at breakpoints.</li>
+        </ul>
+        <p>No JavaScript, just HTML and CSS.</p>
+        <h3>Getting it online</h3>
+        <p>The whole thing lives in git. I push to the main branch and Netlify builds and deploys it. That is the entire release process, and it takes about 30 seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mt-section mt-section--last">
+  <div class="coop-l-grid">
+    <div
+      class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4 mt-section-bg-repeater"
+    ></div>
+    <div
+      class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8"
+    >
+      <h2>How I use AI</h2>
+      <div class="mt-case-body">
+        <p>I used Claude to sort and sift. To get from a blank page to 'something' when trying to write about 20 of work is really hard (especially when you're say alone) and I found it helped me to surface good approaches I could use to shape my stories.</p>
+        <p>The final draft is always completely mine.</p>
+        <p>I use Claude Code heavily in my work on Manchester's Finest, but not on this site. It's too small to waste the resources on, being mindful of when AI will help and when I'm just being lazy is an important distinction I try to make.</p>
+      </div>
+    </div>
+  </div>
+</section>
