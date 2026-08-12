@@ -13,3 +13,6 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# full resolution video masters, kept out of the build and the repo
+/_masters

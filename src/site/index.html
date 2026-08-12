@@ -16,8 +16,24 @@ layout: layouts/base.njk
       class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--medium-6 coop-l-grid__item--large-6 mt-stacking"
     >
       <h1 class="mt-p-lead">I lead design.<br>I do design.</h1>
-      <p class="mt-p-sub">Twelve years at Co-op, four as Head of Design. Twenty years across enterprise, agency, higher education and co-founder of Manchester's Finest.</p>
+      <p class="mt-p-sub">Twelve years at Co&#8209;op, four as Head of Design. Twenty years across enterprise, agency, higher education and co&#8209;founder of Manchester's Finest.</p>
+
+      <div class="mt-banner">
+      <img
+        src="images/matt-tyas-open-to-work.png"
+        width="400"
+        height="400"
+        class="mt-banner__image"
+        alt="Matt speaking at an event in front of a slide reading &lsquo;Your design system is made of people&rsquo;, with an Open To Work badge"
+      />
+      <div class="mt-banner__body">
+        <p class="mt-banner__title">I&rsquo;m open to work</p>
+        <p>I&rsquo;m looking for my next design leadership role.</p>
+        <p><a href="#contact">Get in touch</a></p>
+      </div>
     </div>
+    </div>
+        
   </div>
 </section>
 <section class="mt-section">
@@ -37,9 +53,9 @@ layout: layouts/base.njk
     >
       <div class="mt-text">
         <h2 id="about">About</h2>
-        <p>I lead design across the full spectrum of the craft: service design, user research, content design, interaction and product design. I have stayed hands on throughout. I still prototype, still write code, I still observe users &mdash; I am an enquisitive person who likes to make things.</p>
+        <p>I lead design across the full spectrum of the craft: service design, user research, content design, interaction and product design. I have stayed hands on throughout. I still prototype, write code and observe users. I am an enquisitive person who likes to make things.</p>
         <p>Most of what I am proud of took determination. The Co-op Experience Library started with no mandate and no budget and is now the foundation of the platform the organisation builds on.</p>
-        <p>I co-founded Manchester's Finest. The biggest most trusted platform that exists to support the best independents the city has to offer. It is a live, profitable, commercial product with real profit and loss, real investment decisions, and an audience that tells us immediately when we get it wrong. It has taught me more about experience as a driver of value than theory ever has.</p>
+        <p>I co-founded Manchester's Finest. The biggest most trusted platform that exists to support the best independents the city has to offer. It is a live, profitable, commercial product. It has taught me more about experience as a driver of value than theory ever has.</p>
         <p>I build and scale people-first, high-performing, psychologically safe teams, creating experiences that drive commercial and user-centred outcomes.</p>
         <p>I believe in:</p>
         <ul>
@@ -55,7 +71,7 @@ layout: layouts/base.njk
           class="mt-work-logo"
           alt="The Co-op logo"
         />
-        <h3>Head of Design, Co-op</h3>
+        <h3>Head of Design, the Co-op</h3>
         <p>
           As Head of Design I am responsible for leading the design team and
           design strategy at Co-op. I was previously a Principal Designer
@@ -70,7 +86,7 @@ layout: layouts/base.njk
           width="400"
           alt="Manchester's Finest logo"
         />
-        <h3>Digital Director, Manchester&rsquo;s Finest</h3>
+        <h3>Co-founder and Product Director, Manchester&rsquo;s Finest&nbsp;Group</h3>
         <p>
           Manchester’s Finest is an independent digital media and marketing
           company based in the Northern Quarter. We deliver creative content and
@@ -78,7 +94,7 @@ layout: layouts/base.njk
           very best the city has to offer.
         </p>
         <p>
-          <a href="https://wearefinest.com/">Visit Finest Group to see our portfolio</a>
+          <a href="https://manchestersfinest.com/">Visit manchestersfinest.com</a>
         </p>
       </div>
     </div>
@@ -103,11 +119,9 @@ layout: layouts/base.njk
       <div class="mt-text">
         {% for study in collections.caseStudies %}
         <article class="mt-case-link">
-          <a class="mt-case-link__title" href="{{ study.url }}">{{ study.data.title }}</a>
-          {% if study.data.client or study.data.period %}
-          <p class="mt-case-link__meta">
-            {{ study.data.client }}{% if study.data.client and study.data.period %} &middot; {% endif %}{{ study.data.period }}
-          </p>
+          <a class="mt-case-link__title" href="{{ study.url }}">{{ study.data.title | safe }}</a>
+          {% if study.data.client %}
+          <p class="mt-case-link__meta">{{ study.data.client }}</p>
           {% endif %}
         </article>
         {% endfor %}
@@ -134,6 +148,27 @@ layout: layouts/base.njk
       <div class="mt-text">
         <article class="mt-blog-post">
           <a
+            href="https://digitalblog.coop.co.uk/2026/06/08/exploring-the-role-of-ai-in-our-design-process-at-co-op/"
+          >
+            Exploring the role of AI in our design process at Co&#8209;op
+          </a>
+        </article>
+        <article class="mt-blog-post">
+          <a
+            href="https://digitalblog.coop.co.uk/2024/06/05/bringing-teams-closer-together-with-a-service-jam/"
+          >
+            Bringing teams closer together with a service jam
+          </a>
+        </article>
+        <article class="mt-blog-post">
+          <a
+            href="https://digitalblog.coop.co.uk/2024/02/26/how-user-centred-design-reduces-risk-for-colleagues-and-our-co-op/"
+          >
+            How user-centred design reduces risk for colleagues and our&nbsp;Co&#8209;op 
+          </a>
+        </article>
+        <article class="mt-blog-post">
+          <a
             href="https://digitalblog.coop.co.uk/2021/11/08/introducing-the-co-op-experience-library/"
           >
             Introducing the Co-op Experience Library
@@ -141,16 +176,9 @@ layout: layouts/base.njk
         </article>
         <article class="mt-blog-post">
           <a
-            href="https://matttyas.medium.com/design-system-team-weeknotes-issue-5-127bfa0a7019"
+            href="https://digitalblog.coop.co.uk/2021/04/19/using-a-brand-sprint-to-kick-start-the-reinvention-of-co-ops-design-system/"
           >
-            Co-op design system team weeknotes: Issue 5
-          </a>
-        </article>
-        <article class="mt-blog-post">
-          <a
-            href="https://matttyas.medium.com/design-system-team-weeknotes-issue-4-60975d22622c"
-          >
-            Co-op design system team weeknotes: Issue 4
+            Using a brand sprint to kick start the reinvention of Co&#8209;op’s design&nbsp;system
           </a>
         </article>
         <article class="mt-blog-post">
@@ -158,34 +186,6 @@ layout: layouts/base.njk
             href="https://digitalblog.coop.co.uk/2020/10/15/how-dividing-into-smaller-teams-has-improved-delivery/"
           >
             How dividing into smaller delivery teams has improved delivery
-          </a>
-        </article>
-        <article class="mt-blog-post">
-          <a
-            href="https://medium.com/@MattTyas/design-system-team-weeknotes-issue-3-9-oct-2020-81ab28de899d"
-          >
-            Co-op design system team weeknotes: Issue 3
-          </a>
-        </article>
-        <article class="mt-blog-post">
-          <a
-            href="https://medium.com/@MattTyas/co-op-design-system-team-weeknotes-issue-2-16f079c3988a"
-          >
-            Co-op design system team weeknotes: Issue 2
-          </a>
-        </article>
-        <article class="mt-blog-post">
-          <a
-            href="https://medium.com/@MattTyas/co-op-design-system-team-weeknotes-issue-1-86a1ff493694"
-          >
-            Co-op design system team weeknotes: Issue 1
-          </a>
-        </article>
-        <article class="mt-blog-post">
-          <a
-            href="https://medium.com/@MattTyas/i-caused-a-mini-twitter-storm-because-of-some-job-adverts-i-posted-2e48fe1e451"
-          >
-            I caused a mini Twitter storm – because of some job adverts I posted
           </a>
         </article>
         <article class="mt-blog-post">
@@ -276,14 +276,7 @@ layout: layouts/base.njk
         <p>You can find me on:</p>
         <ul>
           <li><a href="mailto:matt.tyas@gmail.com">matt.tyas@gmail.com</a></li>
-          <li>
-            <a href="https://twitter.com/MattTyas">Twitter (@MattTyas)</a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/matthew-tyas-74b24717/"
-              >Linkedin</a
-            >
-          </li>
+          <li><a href="https://www.linkedin.com/in/matthew-tyas">linkedin.com/in/matthew-tyas</a></li>
         </ul>
       </div>
     </div>

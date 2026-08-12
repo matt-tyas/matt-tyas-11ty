@@ -80,16 +80,16 @@ layout: layouts/base.njk
         class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8 mt-stacking"
       >
         <p class="mt-case-kicker"><a href="/#case-studies">Case study</a></p>
-        <h1 class="mt-case-title">{{ title }}</h1>
+        <h1 class="mt-case-title">{{ title | safe }}</h1>
         {% if standfirst %}
-          <p class="mt-case-standfirst">{{ standfirst }}</p>
+          <p class="mt-case-standfirst">{{ standfirst | safe }}</p>
         {% endif %}
         {% if meta %}
           <dl class="mt-case-meta">
             {% for row in meta %}
               <div class="mt-case-meta__pair">
-                <dt class="mt-case-meta__key">{{ row.key }}</dt>
-                <dd class="mt-case-meta__value">{{ row.value }}</dd>
+                <dt class="mt-case-meta__key">{{ row.key | safe }}</dt>
+                <dd class="mt-case-meta__value">{{ row.value | safe }}</dd>
               </div>
             {% endfor %}
           </dl>
@@ -113,7 +113,7 @@ layout: layouts/base.njk
             {% if item.url == page.url and not loop.last %}
               {% set next = collections.caseStudies[loop.index] %}
               <p class="mt-case-nav__key">Next case study</p>
-              <p class="mt-case-nav__next"><a href="{{ next.url }}">{{ next.data.title }}</a></p>
+              <p class="mt-case-nav__next"><a href="{{ next.url }}">{{ next.data.title | safe }}</a></p>
             {% endif %}
           {% endfor %}
           <p class="mt-case-nav__back"><a href="/#case-studies">All case studies</a></p>

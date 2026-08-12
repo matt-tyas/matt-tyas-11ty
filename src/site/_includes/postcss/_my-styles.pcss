@@ -465,9 +465,11 @@ a:hover {
     margin: 3rem 0;
 }
 
-.mt-figure img {
+.mt-figure img,
+.mt-figure video {
     display: block;
     width: 100%;
+    height: auto;
     background-color: var(--color-white);
     border: 1px solid var(--color-grey-mid-light);
 }
@@ -513,4 +515,44 @@ a:hover {
    from the markup once a real image is in, so the figure runs full width. */
 .mt-figure--placeholder img {
     max-width: 420px;
+}
+
+/* Open to work banner */
+
+.mt-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid var(--color-grey-mid);
+    padding: 1.5rem;
+    margin: 3rem 0;
+}
+
+@media (--mq-medium) {
+    .mt-banner {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.mt-banner__image {
+    display: block;
+    width: 120px;
+    height: auto;
+    margin: 0 0 1rem 0;
+}
+
+@media (--mq-medium) {
+    .mt-banner__image {
+        flex: none;
+        margin: 0 1.5rem 0 0;
+    }
+}
+
+.mt-banner__title {
+    font-weight: 600;
+}
+
+.mt-banner p:last-child {
+    margin-bottom: 0;
 }
