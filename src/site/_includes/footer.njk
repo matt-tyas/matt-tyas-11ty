@@ -1,13 +1,15 @@
-<footer class="mt-wrap">
-  <section class="mt-section">
-      <div class="coop-l-grid">
-          <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4">
-              <p>&copy; Matt Tyas {% year %}</p>
-          </div>
-          <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-8">
-              <p>Last updated {{ site.buildTime | dateDisplay('LLL d, yyyy') }}</p>
-          </div>
-      </div>
-  </section>
-  
-</footer>
+<div class="mt-footer">
+    <footer class="mt-wrap">
+    <section>
+        <div class="coop-l-grid">
+            <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-6">
+                <p>&copy; Matt Tyas {% year %}. Last updated {{ site.buildTime | dateDisplay('LLL d, yyyy') }}</p>
+            </div>
+            <div class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-6 mt-footer__end">
+                <p><a href="/colophon/">How I made this site and how I used AI</a></p>
+            </div>
+        </div>
+    </section>
+    </footer>
+</div>
+

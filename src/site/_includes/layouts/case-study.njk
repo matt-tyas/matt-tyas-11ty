@@ -62,8 +62,8 @@ layout: layouts/base.njk
     <blockquote class="mt-quote"> … <footer class="mt-quote__source">Name, Job title</footer></blockquote>
 #}
 <article class="mt-case">
-
-  <section class="mt-section mt-section--bg mt-section--content">
+<div class="mt-case-study"> 
+  <section class="mt-section mt-section--content">
     <div class="coop-l-grid">
       <div
         class="coop-l-grid__item coop-l-grid__item--small-12 coop-l-grid__item--large-4"
@@ -97,9 +97,9 @@ layout: layouts/base.njk
       </div>
     </div>
   </section>
-
-  {{ content | safe }}
-
+  
+    {{ content | safe }}
+  </div>
   <section class="mt-section mt-section--last">
     <div class="coop-l-grid">
       <div

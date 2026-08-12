@@ -13,7 +13,7 @@ body {
 
 .mt-main {
     padding-top: 0;
-    margin-bottom: 6rem;
+    padding-bottom: 0;
 }
 
 @media (--mq-large) {
@@ -234,14 +234,19 @@ body {
     background-image: none;
 }
 
+.mt-case-study {
+    position: relative;
+    overflow: visible;
+}
+
 @media (--mq-medium) {
-    .mt-section-bg-repeater:after {
+    .mt-case-study:after {
         display: block;
-        background-image: url('/images/walls-2.svg');
+        background-image: url('/images/walls-2.svg'); 
         z-index: -1; 
         content: "";
-        background-size: ;
-        background-repeat: no-repeat;
+        background-size: 300px;
+        background-repeat: repeat-y;
         background-position: 0% 40%;
         position: absolute;
         top: 0px;
@@ -249,8 +254,11 @@ body {
         bottom: 0px;
         left: 0px;
         opacity: 0.15;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
+        mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
     }
 }
+
 
 
 .coop-l-grid__item {
@@ -258,7 +266,7 @@ body {
 }
 
 .mt-section--last {
-    margin-bottom: 20rem;
+   padding-bottom: 20rem;
 }
 
 .mt-text {
@@ -546,4 +554,21 @@ a:hover {
 
 .mt-banner p:last-child {
     margin-bottom: 0;
+}
+
+.mt-footer {
+    padding: 1rem .5rem 0rem .5rem;
+}
+
+.mt-footer__colophon {
+    margin: 0;
+    text-align: left;
+}
+
+@media (--mq-medium) {
+
+    .mt-footer__end p {
+        margin: 0;
+        text-align: right;
+    }
 }
