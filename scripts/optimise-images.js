@@ -9,8 +9,13 @@
  * Commit the optimised files and the host serves them as they are.
  *
  * Safe to run repeatedly: anything already at or below MAX_WIDTH is skipped, so
- * a JPEG is never re-encoded twice and never degrades further. PNGs keep their
- * format so transparency survives.
+ * a JPEG is never re-encoded twice and never degrades further.
+ *
+ * Second phase: everything under images/case-studies is converted to WebP with
+ * cwebp, the original is moved to /_masters/images/... and every reference in
+ * src/site is rewritten. Transparency survives - cwebp encodes the alpha channel
+ * losslessly even when the colour data is lossy. Icons and the root images folder
+ * are deliberately left alone: apple-touch-icon and the favicons must stay PNG.
  */
 
 const fs = require('fs');
@@ -95,3 +100,95 @@ console.log('');
 console.log(`  ${images.length} images, ${changed} ${dryRun ? 'would be resized' : 'resized'}`);
 console.log(`  ${kb(before)} -> ${kb(after)}${saved > 0 ? `  (saved ${kb(saved)}, ${Math.round((saved / before) * 100)}%)` : ''}`);
 if (dryRun) console.log('\n  Dry run. Re-run without --dry-run to apply.');
+
+
+/* ---------------------------------------------------------------------------
+   Phase two: convert the case study images to WebP and fix every reference.
+   --------------------------------------------------------------------------- */
+
+const CASE_DIR = path.join(IMAGE_DIR, 'case-studies');
+const MASTER_DIR = path.join(__dirname, '..', '_masters', 'images');
+const SITE_DIR = path.join(__dirname, '..', 'src', 'site');
+const WEBP_QUALITY = 80;
+
+function mkdirp(dir) {
+  if (fs.existsSync(dir)) return;
+  mkdirp(path.dirname(dir));
+  fs.mkdirSync(dir);
+}
+
+function textFiles(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).reduce((files, entry) => {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) return files.concat(textFiles(full));
+    return /\.(html|njk|md)$/i.test(entry.name) ? files.concat([full]) : files;
+  }, []);
+}
+
+if (!fs.existsSync(CASE_DIR)) {
+  console.log('\n  No case-studies folder, nothing to convert.');
+  process.exit(0);
+}
+
+try {
+  execFileSync('which', ['cwebp'], { stdio: 'ignore' });
+} catch (e) {
+  console.error('\n  cwebp not found, skipping the WebP step. Install it with: brew install webp');
+  process.exit(0);
+}
+
+const candidates = walk(CASE_DIR).filter(f => /\.(jpe?g|png)$/i.test(f));
+
+if (!candidates.length) {
+  console.log('\n  WebP: nothing left to convert.');
+} else {
+  console.log('\n  Converting case study images to WebP');
+  let wBefore = 0;
+  let wAfter = 0;
+  const renames = [];
+
+  candidates.forEach(file => {
+    const rel = path.relative(IMAGE_DIR, file);
+    const startSize = fs.statSync(file).size;
+    const out = file.replace(/\.(jpe?g|png)$/i, '.webp');
+
+    execFileSync('cwebp', ['-quiet', '-q', String(WEBP_QUALITY), '-metadata', 'none', file, '-o', out]);
+
+    const endSize = fs.statSync(out).size;
+    wBefore += startSize;
+    wAfter += endSize;
+
+    // keep the original outside the build, alongside the video masters
+    const master = path.join(MASTER_DIR, rel);
+    mkdirp(path.dirname(master));
+    fs.renameSync(file, master);
+
+    renames.push([
+      '/images/' + rel.split(path.sep).join('/'),
+      '/images/' + path.relative(IMAGE_DIR, out).split(path.sep).join('/'),
+    ]);
+
+    console.log(`  webp    ${rel.padEnd(46)} ${kb(startSize)} -> ${kb(endSize)}`);
+  });
+
+  // rewrite every reference in the templates and pages
+  let edited = 0;
+  textFiles(SITE_DIR).forEach(f => {
+    const before = fs.readFileSync(f, 'utf8');
+    let after = before;
+    renames.forEach(([from, to]) => {
+      after = after.split(from).join(to);
+      after = after.split(from.slice(1)).join(to.slice(1)); // relative form, no leading slash
+    });
+    if (after !== before) {
+      fs.writeFileSync(f, after);
+      edited += 1;
+      console.log('  ref     ' + path.relative(SITE_DIR, f));
+    }
+  });
+
+  const wSaved = wBefore - wAfter;
+  console.log('');
+  console.log(`  ${candidates.length} converted, ${edited} file(s) updated, originals moved to /_masters/images`);
+  console.log(`  ${kb(wBefore)} -> ${kb(wAfter)}  (saved ${kb(wSaved)}, ${Math.round((wSaved / wBefore) * 100)}%)`);
+}

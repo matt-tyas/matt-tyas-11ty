@@ -480,6 +480,15 @@ a:hover {
     object-fit: cover;
 }
 
+/* For a row of screenshots of different shapes: level the heights by cropping
+   from the bottom and the right, so each one keeps its header and its top left
+   corner, which is where the logo and navigation live. */
+.mt-figure--level img {
+    aspect-ratio: 1 / 0.6;
+    object-fit: cover;
+    object-position: left top;
+}
+
 .mt-figure__caption {
     color: var(--color-text-alt);
     font-size: 0.8em;
