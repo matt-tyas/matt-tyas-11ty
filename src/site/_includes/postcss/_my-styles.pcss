@@ -543,6 +543,15 @@ a:hover {
     }
 }
 
+@media (--mq-large) {
+    .mt-banner {
+        /* Pull left by border + padding + image + gap so the banner
+           text lines up with the column's body text */
+        margin-left: calc(-1px - 1.5rem - 120px - 1.5rem);
+        margin-right: -20%;
+    }
+}
+
 .mt-banner__image {
     display: block;
     width: 120px;
